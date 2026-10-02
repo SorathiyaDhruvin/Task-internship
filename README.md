@@ -1,7 +1,7 @@
-# Dog API Full-Stack Project
+# Rick & Morty Full-Stack Project
 
 ## 1. Project Overview
-This project is a simple full-stack web application that fetches random dog images from the public Dog CEO API. The application uses a React frontend to display the user interface and an Express (Node.js) backend to handle the external API requests securely.
+This project is a simple full-stack web application that fetches random characters from the public Rick & Morty API. The application uses a React frontend to display the user interface and an Express (Node.js) backend to handle the external API requests securely.
 
 ## 2. Technologies Used
 **Frontend:**
@@ -21,11 +21,11 @@ This project is a simple full-stack web application that fetches random dog imag
 dog-api-react/
 ├── backend/                  # Express server
 │   ├── controllers/
-│   │   └── dogController.js  # Handle request/response logic
+│   │   └── rickController.js # Handle request/response logic
 │   ├── routes/
-│   │   └── dogRoutes.js      # Define API routes
+│   │   └── rickRoutes.js     # Define API routes
 │   ├── services/
-│   │   └── dogService.js     # External API communication
+│   │   └── rickService.js    # External API communication
 │   ├── server.js             # Main server entry point
 │   ├── package.json
 │   └── .env                  # Environment variables
@@ -34,7 +34,7 @@ dog-api-react/
 │   ├── src/
 │   │   ├── components/       # Reusable UI components
 │   │   │   ├── ApiInput.jsx
-│   │   │   ├── DogImage.jsx
+│   │   │   ├── RickImage.jsx
 │   │   │   └── JsonResponse.jsx
 │   │   ├── App.jsx           # Main React component
 │   │   ├── App.css           # Styling
@@ -46,20 +46,20 @@ dog-api-react/
 ```
 
 ## 4. How the Frontend Works
-The React frontend renders a clean user interface containing a read-only input field showing the target URL and a "Fetch!" button. When the button is clicked, it makes an HTTP GET request to the local Express backend (`http://localhost:5000/api/dog`). The application manages its loading, error, and data states using React hooks. Once data is received, the JSON response and the extracted dog image are displayed side-by-side using the `JsonResponse` and `DogImage` components.
+The React frontend renders a clean user interface containing a read-only input field showing the target URL and a "Fetch!" button. When the button is clicked, it makes an HTTP GET request to the local Express backend (`http://localhost:5000/api/character`). The application manages its loading, error, and data states using React hooks. Once data is received, the JSON response and the extracted character image are displayed side-by-side using the `JsonResponse` and `RickImage` components.
 
 ## 5. How the Backend Works
 The backend is built using Express.js. It listens on port 5000 (configured via `.env`). The API structure is separated into routes, controllers, and services to maintain clean architecture.
-- **Routes**: Defines the `/api/dog` endpoint.
+- **Routes**: Defines the `/api/character` endpoint.
 - **Controller**: Triggers the service logic and manages HTTP responses (sending JSON or handling errors).
-- **Service**: Makes the actual HTTP request to the external Dog CEO API.
+- **Service**: Makes the actual HTTP request to the external Rick & Morty API, generating a random ID from 1 to 826.
 
 ## 6. API Flow
 React (Frontend)
-  ↓ GET /api/dog
+  ↓ GET /api/character
 Express Backend (Server)
-  ↓ GET https://dog.ceo/api/breeds/image/random
-Dog CEO API
+  ↓ GET https://rickandmortyapi.com/api/character/{random_id}
+Rick & Morty API
   ↓ Returns JSON
 Express Backend
   ↓ Returns JSON
@@ -91,7 +91,14 @@ The app will run typically on `http://localhost:5173`.
 ## 10. Example API Response
 ```json
 {
-  "message": "https://images.dog.ceo/breeds/hound-walker/n02089867_1578.jpg",
-  "status": "success"
+  "id": 1,
+  "name": "Rick Sanchez",
+  "status": "Alive",
+  "species": "Human",
+  "type": "",
+  "gender": "Male",
+  "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+  "url": "https://rickandmortyapi.com/api/character/1",
+  "created": "2017-11-04T18:48:46.250Z"
 }
 ```
