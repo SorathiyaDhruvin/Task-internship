@@ -1,4 +1,4 @@
-# Dog API Full-Stack Project
+# Character API Full-Stack Project
 
 ## 1. Project Overview
 This project is a simple full-stack web application that fetches random dog images from the public Dog CEO API. The application uses a React frontend to display the user interface and an Express (Node.js) backend to handle the external API requests securely.
