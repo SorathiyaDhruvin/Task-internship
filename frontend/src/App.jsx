@@ -15,7 +15,7 @@ function App() {
 
     try {
       // Calling our Express backend which then calls the Rick & Morty API
-      const response = await fetch('http://localhost:5000/api/character');
+      const response = await fetch('https://task-internship-zw1y.onrender.com/api/character');
       
       if (!response.ok) {
         throw new Error(`Error: ${response.status} ${response.statusText}`);
